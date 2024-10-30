@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Table, TableHead, TableBody, TableRow, TableCell, styled, Button } from '@mui/material';
 
-import { getUsers,deleteUser } from '../service/api.js';
+import { getUsers, deleteUser } from '../service/api.js';
 
 import { Link } from 'react-router-dom';
 
@@ -15,6 +15,7 @@ const THead = styled(TableRow)`
         font-size: 20px;
         background: #000000;
         color: #FFFFFF;
+        height: 50px;
     }
 `;
 
@@ -35,22 +36,22 @@ const AllUsers = () => {
     const getAllUsers = async () => {
         try {
             let response = await getUsers();
-    
+
             // Check if response is undefined
             if (!response) {
                 console.error('Error fetching users: Response is undefined');
                 return;
             }
-    
+
             // Assuming the response has a 'data' property
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching users:', error.message);
         }
     }
-    
-    
-    
+
+
+
 
     const deleteUserDetails = async (id) => {
         await deleteUser(id);

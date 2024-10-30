@@ -47,10 +47,12 @@ const AddUser = () => {
 
   // Ensure the category input uses paramValue as initial state
   useEffect(() => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      category: paramValue,
-    }));
+    if (paramValue) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        category: paramValue,
+      }));
+    }
   }, [paramValue]);
 
   const onValueChange = (e) => {
@@ -59,7 +61,7 @@ const AddUser = () => {
   };
 
   const addUserDetails = async () => {
-    if (!user.title || !user.content || !user.date) {
+    if (!user.category || !user.title || !user.content || !user.date) {
       alert("All fields are compulsory!");
       return;
     }
@@ -75,7 +77,7 @@ const AddUser = () => {
         <Input
           onChange={(e) => onValueChange(e)}
           name="category"
-          value={paramValue}
+          value={paramValue || user.category}
         />
       </FormControl>
       <FormControl>
