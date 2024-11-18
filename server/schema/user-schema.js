@@ -1,35 +1,29 @@
 import mongoose from "mongoose";
+import AutoIncrement from "mongoose-sequence";
 
-import autoIncrement from 'mongoose-auto-increment';
+const userSchema = new mongoose.Schema({
+  category: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+  },
+});
 
+// Attach AutoIncrement plugin to the schema
+userSchema.plugin(AutoIncrement(mongoose), { inc_field: "userId" });
 
+// Create the model
+const User = mongoose.model("user", userSchema);
 
-const userSchema = mongoose.Schema({
+export default User;
 
-
-    category: {
-        type: String,
-        required: true,
-        
-      },
-      title: {
-        type: String,
-        required: true,
-      },
-      content: {
-        type: String,
-        required: true,
-      },
-      date: {
-        type: String,
-      }
-})
-
-
-autoIncrement.initialize(mongoose.connection);
-userSchema.plugin(autoIncrement.plugin, 'user');
-
-
-const user = mongoose.model('user', userSchema);
-
-export default user;

@@ -15,14 +15,14 @@ app.use(cors(
     methods: ["POST", "GET"],
     credentials: true
   }
-  ));
+));
 
 
 dotenv.config();
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors()); 
+app.use(cors());
 
 app.use('/', Router);
 
