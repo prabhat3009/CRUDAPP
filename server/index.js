@@ -11,7 +11,7 @@ import Router from './routes/route.js';
 const app = express();
 app.use(cors(
     {
-        origin: ["https://crudapp-smoky.vercel.app/"],
+        origin: ["https://crudapp-smoky.vercel.app"],
         methods: ["POST", "GET"],
         credentials: true
     }
