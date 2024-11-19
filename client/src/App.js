@@ -1,4 +1,5 @@
 import './App.css';
+import axios from 'axios';
 
 //Components
 import NavBar from './components/NavBar.jsx';
@@ -12,6 +13,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
+
+axios.default.withCredentials = true;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('https://crudapp-api-nine.vercel.app/?vercelToolbarCode=SjKY5TOImvtGea2')
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+  }
+  
   return (
     <BrowserRouter>
       <NavBar />
