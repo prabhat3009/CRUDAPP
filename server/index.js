@@ -9,6 +9,13 @@ import Connection from './database/db.js';
 import Router from './routes/route.js';
 
 const app = express();
+/*app.use(cors(
+    {
+        origin: [""],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));*/
 
 dotenv.config();
 
